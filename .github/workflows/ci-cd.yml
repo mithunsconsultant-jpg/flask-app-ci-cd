@@ -46,6 +46,9 @@ jobs:
 
   deploy-to-ec2:
     needs: docker-build-and-push
+    runs-on: ubuntu-latest
+    steps:
+    needs: docker-build-and-push
     runs-on: ubuntu-latest 
     steps:
       - name: Copy SSH key
