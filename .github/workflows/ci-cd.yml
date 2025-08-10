@@ -27,7 +27,7 @@ jobs:
   docker-build-and-push: 
     needs: build-and-test 
     runs-on: ubuntu-latest
-    if: github.ref === 'refs/heads/main'
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
