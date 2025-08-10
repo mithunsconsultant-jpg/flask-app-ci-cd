@@ -11,7 +11,7 @@ env:
 
 jobs:
   build-and-test:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -26,7 +26,7 @@ jobs:
 
   docker-build-and-push: 
     needs: build-and-test 
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Checkout Code
@@ -46,10 +46,10 @@ jobs:
 
   deploy-to-ec2:
     needs: docker-build-and-push
-    run-on: ubuntu-latest 
+    runs-on: ubuntu-latest 
     steps:
      - name: Copy SSH file
-       run: |
+      run: |
         mkdir -p ~/.ssh 
         echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
